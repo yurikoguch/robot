@@ -4,13 +4,14 @@ import com.shpp.karel.KarelTheRobot;
 
 public class Assignment1Part1 extends KarelTheRobot {
 
+    /*basic method*/
     public void run() throws Exception {
       goToTheBeeper();
       takeTheBeeper();
       goToTheStart() ;
     }
 
-
+    /*karel going to the beeper and stand in the cell, where beeper is placed*/
     private void goToTheBeeper() throws Exception {
         goToTheNeighboringRow();
         for (int i=0; i<4; i++){
@@ -18,15 +19,12 @@ public class Assignment1Part1 extends KarelTheRobot {
         }
     }
 
-
-
    /*
      *pic the beeper and turn around
      *result:karel looking to the west*/
     private void takeTheBeeper() throws Exception{
         pickBeeper();
         turnAround();
-
     }
 
    /*
@@ -38,15 +36,13 @@ public class Assignment1Part1 extends KarelTheRobot {
         }
         goToTheNeighboringRow();
         turnAround();
-
     }
-
 
     // Method for turn right
     private void turnRight() throws Exception {
-        turnLeft();
-        turnLeft();
-        turnLeft();
+        for (int i=0; i<3; i++){
+            turnLeft();
+        }
     }
 
     // Method for rotate on 180 degrees

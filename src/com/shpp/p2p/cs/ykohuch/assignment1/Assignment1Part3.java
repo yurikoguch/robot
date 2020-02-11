@@ -3,12 +3,15 @@ package com.shpp.p2p.cs.ykohuch.assignment1;
 import com.shpp.karel.KarelTheRobot;
 
 public class Assignment1Part3 extends KarelTheRobot{
+
+    /*basic method*/
     public void run() throws Exception {
         placeBeepers();
         findTheEdge();
         stopInTheCenter();
     }
 
+    /*Karel placed beeper while front is clear he moves and put beepers*/
     private void placeBeepers() throws Exception{
         putBeeper();
         while (frontIsClear ()) {
@@ -18,7 +21,7 @@ public class Assignment1Part3 extends KarelTheRobot{
         turnAround();
     }
 
-    // Move to the next wall and find the edge
+    /*Move to the next wall and find the edge*/
     private void findTheEdge() throws Exception{
         while (frontIsClear ()) {
             move();
@@ -26,32 +29,32 @@ public class Assignment1Part3 extends KarelTheRobot{
         turnAround();
         while(noBeepersPresent()) {
             move();
-        }								// Has found the edge
+        }
         move();
         CheckingBeepers();
     }
 
-
-    // Moves 1 more space to control checking the last Beeper
+    /*Moves 1 more space to control checking the last Beeper
+    *  if is not the last Beeper karel turn around move and pic the beepers*/
     private void CheckingBeepers() throws Exception{
-        if (beepersPresent()) { 		// if is not the last Beeper
+        if (beepersPresent()) {
             turnAround();
             if(frontIsClear()) {
                 move();
-                pickBeeper();                // go back and pick it up
+                pickBeeper();
                 turnAround();
-                findTheEdge();                // then turn around and bounce off the next wall.
+                findTheEdge();
             }
         }
     }
 
-    //Karel stops in the middle of row
+    /*Karel stops in the middle of row*/
     private void stopInTheCenter() throws Exception{
         turnAround();
         move();
     }
 
-    // Method for rotate on 180 degrees
+    /* Method for rotate on 180 degrees*/
     private void  turnAround() throws Exception {
         turnLeft();
         turnLeft();
